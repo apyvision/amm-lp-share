@@ -1,6 +1,7 @@
 type User @entity {
   id: ID!
   liquidityPositions: [LiquidityPosition!] @derivedFrom(field: "user")
+  userLPTransactions: [UserLPTransaction!] @derivedFrom(field: "user")
 }
 
 type LiquidityPosition @entity {
@@ -8,12 +9,70 @@ type LiquidityPosition @entity {
   user: User!
   poolAddress: Bytes!
   balance: BigDecimal!
-  poolProviderName: PoolProvider!
+  balanceFromMintBurn: BigDecimal!
+  poolProviderKey: PoolProviderKey!
 }
 
-enum PoolProvider {
-  Balancer
-  Uniswap
-  Sushiswap
-  YFV
+type LiquidityPositionDayData @entity {
+  id: ID!
+  date: Int!
+  userAddress: Bytes!
+  poolAddress: Bytes!
+  balance: BigDecimal!
+  balanceFromMintBurn: BigDecimal!
+  poolProviderKey: PoolProviderKey!
+}
+
+type UserLPTransaction @entity {
+  id: ID!
+  user: User!
+  poolAddress: Bytes!
+  poolProviderKey: PoolProviderKey!
+  transactionHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+}
+
+" Store exception data outside of graph logs "
+type Exception @entity {
+  id: ID!
+  addrs: Bytes!
+  txHash: Bytes!
+  message: String!
+}
+
+" Token Transferred in a Transaction "
+type TransactionTokenTransferred @entity {
+  id: ID!
+  from: Bytes!
+  to: Bytes!
+  transactionHash: Bytes!
+  value: BigDecimal!
+  previousValue: BigDecimal
+}
+
+" List of all possible providers Provider_Version_Chain "
+enum PoolProviderKey {
+  pancakeswap_v1_bsc
+
+  balancer_v1_eth
+  balancer_v2_eth
+  kyber_v1_eth
+  oneinch_v2_eth
+  sushiswap_v1_eth
+  uniswap_v2_eth
+  value_v1_eth
+
+  spiritswap_v1_fantom
+  spookyswap_v1_fantom
+  sushiswap_v1_fantom
+  waka_v1_fantom
+
+  balancer_v2_matic
+  cometh_v1_matic
+  dfyn_v1_matic
+  elk_v1_matic
+  kyber_v1_matic
+  sushiswap_v1_matic
+  quickswap_v1_matic
 }

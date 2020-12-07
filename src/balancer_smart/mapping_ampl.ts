@@ -1,9 +1,8 @@
-/* eslint-disable prefer-const */
-import {Transfer} from '../../generated/templates/UniswapPair/Pair'
+import {Transfer} from '../../generated/BalancerSmartPoolAmpl/BPoolSmart'
 import {handleTransferGeneral, getProviderVersionChainKey} from "../util";
 
-let PROVIDER_KEY = "uniswap";
-let PROVIDER_VERSION = "v2";
+let PROVIDER_KEY = "balancer";
+let PROVIDER_VERSION = "v1";
 
 export function handleTransfer(event: Transfer): void {
   handleTransferGeneral(
@@ -14,3 +13,4 @@ export function handleTransfer(event: Transfer): void {
     event.params.from,
     event.params.value);
 }
+

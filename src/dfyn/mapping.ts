@@ -1,9 +1,11 @@
 /* eslint-disable prefer-const */
-import {Transfer} from '../../generated/templates/UniswapPair/Pair'
-import {handleTransferGeneral, getProviderVersionChainKey} from "../util";
 
-let PROVIDER_KEY = "uniswap";
-let PROVIDER_VERSION = "v2";
+import {Transfer} from "../../generated/templates/DfynPair/Pair";
+
+import { handleTransferGeneral, getProviderVersionChainKey } from "../util";
+
+let PROVIDER_KEY = "dfyn";
+let PROVIDER_VERSION = "v1";
 
 export function handleTransfer(event: Transfer): void {
   handleTransferGeneral(
@@ -13,4 +15,6 @@ export function handleTransfer(event: Transfer): void {
     event.params.to,
     event.params.from,
     event.params.value);
+
 }
+
