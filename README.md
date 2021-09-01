@@ -21,7 +21,7 @@ This is one of the subgraphs used for [APY Vision](https://apy.vision)
 #### Building
 
 ```
-nvm use 10.16.3
+nvm use 10.16.3 // optional
 ```
 
 To generate the mapping ts files, please do:
