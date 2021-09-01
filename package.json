@@ -1,0 +1,39 @@
+{
+  "name": "liquidity-vision-balances-subgraph",
+  "license": "UNLICENSED",
+  "version": "0.1.0",
+  "scripts": {
+    "create": "graph create apyvision/amm_lp_share_subgraph --node https://api.thegraph.com/deploy/",
+    "create-local": "graph create apyvision/amm_lp_share_subgraph --node http://127.0.0.1:8020",
+
+    "codegen": "graph codegen",
+    "codegen-eth": "graph codegen subgraph-eth.yaml",
+    "codegen-matic": "graph codegen subgraph-matic.yaml",
+    "codegen-fantom": "graph codegen subgraph-fantom.yaml",
+    "codegen-bsc": "graph codegen subgraph-bsc.yaml",
+
+    "build": "graph build",
+    "build-eth": "graph build subgraph-eth.yaml",
+    "build-matic": "graph build subgraph-matic.yaml",
+    "build-fantom": "graph build subgraph-fantom.yaml",
+    "build-bsc": "graph build subgraph-bsc.yaml",
+
+    "deploy-local": "graph deploy apyvision/amm_lp_share_subgraph --ipfs http://localhost:5001 --node http://127.0.0.1:8020",
+    "deploy-eth": "graph deploy apyvision/ethereum-user-amm-shares subgraph-eth.yaml --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
+    "deploy-matic": "graph deploy apyvision/polygon-user-amm-shares subgraph-matic.yaml --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
+    "deploy-fantom": "graph deploy apyvision/fantom-user-amm-shares subgraph-fantom.yaml --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
+    "deploy-bsc": "graph deploy apyvision/pancake-swap-apy-vision subgraph-bsc.yaml --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.21.0",
+    "@graphprotocol/graph-ts": "^0.20.1"
+  },
+  "dependencies": {
+    "@protofire/subgraph-toolkit": "0.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
+    "truffle": "^5.4.0",
+    "truffle-contract": "^4.0.31",
+    "truffle-hdwallet-provider": "^1.0.17"
+  }
+}

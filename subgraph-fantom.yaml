@@ -1,0 +1,187 @@
+specVersion: 0.0.3
+description: Liquidity Pool Balances for an Address
+repository: https://github.com/apyvision/amm_lp_share_subgraph
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: SushiswapFactory
+    network: fantom
+    source:
+      address: '0xc35dadb65012ec5796536bd9864ed8773abc74c4'
+      abi: Factory
+      startBlock: 2457879
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/sushiswap/factory.ts
+      entities:
+        - Pair
+        - Token
+      abis:
+        - name: Factory
+          file: ./abis/uniswap/factory.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: PairCreated(indexed address,indexed address,address,uint256)
+          handler: handleNewPair
+  - kind: ethereum/contract
+    name: WakaswapFactory
+    network: fantom
+    source:
+      address: '0xb2435253c71fca27be41206eb2793e44e1df6b6d'
+      abi: Factory
+      startBlock: 4467160
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/wakaswap/factory.ts
+      entities:
+        - Pair
+        - Token
+      abis:
+        - name: Factory
+          file: ./abis/uniswap/factory.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: PairCreated(indexed address,indexed address,address,uint256)
+          handler: handleNewPair
+  - kind: ethereum/contract
+    name: SpookyswapFactory
+    network: fantom
+    source:
+      address: '0x152eE697f2E276fA89E96742e9bB9aB1F2E61bE3'
+      abi: Factory
+      startBlock: 3795376
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/spookyswap/factory.ts
+      entities:
+        - Pair
+        - Token
+      abis:
+        - name: Factory
+          file: ./abis/uniswap/factory.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: PairCreated(indexed address,indexed address,address,uint256)
+          handler: handleNewPair
+  - kind: ethereum/contract
+    name: SpiritswapFactory
+    network: fantom
+    source:
+      address: '0xEF45d134b73241eDa7703fa787148D9C9F4950b0'
+      abi: Factory
+      startBlock: 4202418
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/spiritswap/factory.ts
+      entities:
+        - Pair
+        - Token
+      abis:
+        - name: Factory
+          file: ./abis/uniswap/factory.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: PairCreated(indexed address,indexed address,address,uint256)
+          handler: handleNewPair
+templates:
+  - kind: ethereum/contract
+    name: SpookyswapPair
+    network: fantom
+    source:
+      abi: Pair
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/spookyswap/mapping.ts
+      entities:
+        - User
+        - UserLPTransaction
+        - LiquidityPosition
+      abis:
+        - name: Pair
+          file: ./abis/uniswap/pair.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+  - kind: ethereum/contract
+    name: SpiritswapPair
+    network: fantom
+    source:
+      abi: Pair
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/spiritswap/mapping.ts
+      entities:
+        - User
+        - UserLPTransaction
+        - LiquidityPosition
+      abis:
+        - name: Pair
+          file: ./abis/uniswap/pair.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+  - kind: ethereum/contract
+    name: WakaswapPair
+    network: fantom
+    source:
+      abi: Pair
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/wakaswap/mapping.ts
+      entities:
+        - User
+        - UserLPTransaction
+        - LiquidityPosition
+      abis:
+        - name: Pair
+          file: ./abis/uniswap/pair.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+  - kind: ethereum/contract
+    name: SushiswapPair
+    network: fantom
+    source:
+      abi: Pair
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/sushiswap/mapping.ts
+      entities:
+        - User
+        - UserLPTransaction
+        - LiquidityPosition
+      abis:
+        - name: Pair
+          file: ./abis/uniswap/pair.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
