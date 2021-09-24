@@ -271,6 +271,8 @@ export function getProviderVersionChainKey(provider: string, version: string): s
 
   if (dataSource.network() == 'mainnet') {
     chainKey = "eth";
+  } else if (dataSource.network() == 'arbitrum-one') {
+    chainKey = "arbitrum";
   } else {  // Typically same name, add another conditional if not
     chainKey = dataSource.network();
   }

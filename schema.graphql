@@ -75,4 +75,9 @@ enum PoolProviderKey {
   kyber_v1_matic
   sushiswap_v1_matic
   quickswap_v1_matic
+
+  balancer_v2_arbitrum
+  sushiswap_v1_arbitrum
+  swapr_v1_arbitrum
+
 }
