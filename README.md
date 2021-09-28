@@ -50,8 +50,9 @@ If you have other AMMs to add, please feel free to open a PR!
 
 
 #### Changelog for the subgraph
+- Sept 27, 2021
+  Don't use the balance for now (it's too slow)
 - Sept 24, 2021
-Added Arbitrum
-
-- Aug 30, 2021
-Upload V1 of [apyvision/ethereum-user-amm-shares](https://thegraph.com/legacy-explorer/subgraph/apyvision/ethereum-user-amm-shares)
+  Added Arbitrum
+- Aug 30, 2021 
+  Upload V1 of [apyvision/ethereum-user-amm-shares](https://thegraph.com/legacy-explorer/subgraph/apyvision/ethereum-user-amm-shares)
