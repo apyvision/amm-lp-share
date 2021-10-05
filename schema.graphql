@@ -80,4 +80,7 @@ enum PoolProviderKey {
   sushiswap_v1_arbitrum
   swapr_v1_arbitrum
 
+  viperswap_v1_harmony
+  sushiswap_v1_harmony
+  kingdoms_v1_harmony
 }

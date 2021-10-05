@@ -1,0 +1,142 @@
+specVersion: 0.0.3
+description: Liquidity Pool Balances for an Address
+repository: https://github.com/apyvision/amm_lp_share_subgraph
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: ViperswapFactory
+    network: harmony
+    source:
+      address: '0x7d02c116b98d0965ba7b642ace0183ad8b8d2196'
+      abi: Factory
+      startBlock: 10180050
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/uniswap/factory.ts
+      entities:
+        - Pair
+        - Token
+      abis:
+        - name: Factory
+          file: ./abis/uniswap/factory.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: PairCreated(indexed address,indexed address,address,uint256)
+          handler: handleNewPair
+  - kind: ethereum/contract
+    name: SushiswapFactory
+    network: harmony
+    source:
+      address: '0xc35dadb65012ec5796536bd9864ed8773abc74c4'
+      abi: Factory
+      startBlock: 11256300
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/sushiswap/factory.ts
+      entities:
+        - Pair
+        - Token
+      abis:
+        - name: Factory
+          file: ./abis/uniswap/factory.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: PairCreated(indexed address,indexed address,address,uint256)
+          handler: handleNewPair
+  - kind: ethereum/contract
+    name: KingdomsFactory
+    network: harmony
+    source:
+      address: '0x9014B937069918bd319f80e8B3BB4A2cf6FAA5F7'
+      abi: Factory
+      startBlock: 16339800
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/uniswap/factory.ts
+      entities:
+        - Pair
+        - Token
+      abis:
+        - name: Factory
+          file: ./abis/uniswap/factory.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: PairCreated(indexed address,indexed address,address,uint256)
+          handler: handleNewPair
+templates:
+  - kind: ethereum/contract
+    name: ViperswapPair
+    network: harmony
+    source:
+      abi: Pair
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/uniswap/mapping.ts
+      entities:
+        - User
+        - UserLPTransaction
+        - LiquidityPosition
+      abis:
+        - name: Pair
+          file: ./abis/uniswap/pair.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+  - kind: ethereum/contract
+    name: KingdomsPair
+    network: harmony
+    source:
+      abi: Pair
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/uniswap/mapping.ts
+      entities:
+        - User
+        - UserLPTransaction
+        - LiquidityPosition
+      abis:
+        - name: Pair
+          file: ./abis/uniswap/pair.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+  - kind: ethereum/contract
+    name: SushiswapPair
+    network: harmony
+    source:
+      abi: Pair
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/sushiswap/mapping.ts
+      entities:
+        - User
+        - UserLPTransaction
+        - LiquidityPosition
+      abis:
+        - name: Pair
+          file: ./abis/uniswap/pair.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
