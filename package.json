@@ -28,7 +28,8 @@
     "deploy-fantom": "graph deploy apyvision/fantom-user-amm-shares subgraph-fantom.yaml --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
     "deploy-bsc": "graph deploy apyvision/pancake-swap-apy-vision subgraph-bsc.yaml --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
     "deploy-arbitrum": "graph deploy apyvision/arbitrum-user-amm-shares subgraph-arbitrum.yaml --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
-    "deploy-harmony": "graph deploy apyvision/harmony-user-amm-shares subgraph-arbitrum.yaml --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/"
+    "create-harmony": "graph create --node https://graph.t.hmny.io:8020 harmony/user-amm-shares",
+    "deploy-harmony": "graph deploy --node https://graph.t.hmny.io:8020 --ipfs http://graph.t.hmny.io:5001 harmony/user-amm-shares"
   },
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.21.0",
