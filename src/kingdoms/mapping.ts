@@ -1,10 +1,10 @@
 /* eslint-disable prefer-const */
-import {Transfer} from '../../generated/templates/ViperswapPair/Pair'
+import {Transfer} from '../../generated/templates/KingdomsPair/Pair'
 import {handleTransferGeneral, getProviderVersionChainKey} from "../util";
 
 export function handleTransfer(event: Transfer): void {
   handleTransferGeneral(
-    "viperswap_v1_harmony",
+    "kingdoms_v1_harmony",
     event,
     event.address,
     event.params.to,
