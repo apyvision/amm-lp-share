@@ -1,0 +1,52 @@
+specVersion: 0.0.3
+description: Liquidity Pool Balances for an Address
+repository: https://github.com/apyvision/amm-lp-share
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: KatanaFactory
+    network: mainnet
+    source:
+      address: '0xb255d6a720bb7c39fee173ce22113397119cb930'
+      abi: Factory
+      startBlock: 7860906
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/katana/factory.ts
+      entities:
+        - Pair
+        - Token
+      abis:
+        - name: Factory
+          file: ./abis/uniswap/factory.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: PairCreated(indexed address,indexed address,address,uint256)
+          handler: handleNewPair
+templates:
+  - kind: ethereum/contract
+    name: KatanaPair
+    network: mainnet
+    source:
+      abi: Pair
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      file: ./src/katana/mapping.ts
+      entities:
+        - User
+        - UserLPTransaction
+        - LiquidityPosition
+      abis:
+        - name: Pair
+          file: ./abis/uniswap/pair.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
