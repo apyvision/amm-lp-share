@@ -49,13 +49,22 @@ You can find the latest schema in schema.graphql
 If you have other AMMs to add, please feel free to open a PR!
 
 
+#### Subgraph URLs on the Graph
+These are the subgraphs that we have deployed on the graph, please check package.json for the addresses
+
 #### Changelog for the subgraph
-- Sept 27, 2021
-  Don't use the balance for now (it's too slow)
-- Sept 24, 2021
-  Added Arbitrum
-- Aug 30, 2021 
-  Upload V1 of [apyvision/ethereum-user-amm-shares](https://thegraph.com/legacy-explorer/subgraph/apyvision/ethereum-user-amm-shares)
+Nov 29, 2021
+- Update our graph libs to the latest (breaking changes) version
+- Deployed Fantom with 0.0.5
+
+Sept 27, 2021
+- Don't use the balance for now (it's too slow)
+
+Sept 24, 2021
+- Added Arbitrum
+
+Aug 30, 2021 
+- Upload V1 of [apyvision/ethereum-user-amm-shares](https://thegraph.com/legacy-explorer/subgraph/apyvision/ethereum-user-amm-shares)
 
 
 #### Note for Harmony
