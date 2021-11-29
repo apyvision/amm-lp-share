@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-import {PairCreated} from '../../generated/ViperswapFactory/Factory'
+import {PairCreated} from '../../generated/KatanaFactory/Factory'
 import {log} from "@graphprotocol/graph-ts/index";
 import {KatanaPair as PairTemplate} from '../../generated/templates'
 
