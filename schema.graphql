@@ -66,7 +66,8 @@ enum PoolProviderKey {
   spiritswap_v1_fantom
   spookyswap_v1_fantom
   sushiswap_v1_fantom
-  waka_v1_fantom
+  wakaswap_v1_fantom
+  kyber_v1_fantom
 
   balancer_v2_matic
   cometh_v1_matic
