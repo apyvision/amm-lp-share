@@ -127,7 +127,8 @@ export function createOrUpdateLiquidityPosition(
 
   let mintBurnValToAdd = convertTokenToDecimal(addToMintBurnVal, BI_18);
   lp.balanceFromMintBurn = lp.balanceFromMintBurn.plus(mintBurnValToAdd);
-  lp.balance = getBalanceOf(poolAddrs, userAddrs);
+  // TODO fix this to use the db
+  lp.balance = BigDecimal.fromString('0')
   lp.save()
 
   return lp as LiquidityPosition
@@ -271,6 +272,8 @@ export function getProviderVersionChainKey(provider: string, version: string): s
 
   if (dataSource.network() == 'mainnet') {
     chainKey = "eth";
+  } else if (dataSource.network() == 'arbitrum-one') {
+    chainKey = "arbitrum";
   } else {  // Typically same name, add another conditional if not
     chainKey = dataSource.network();
   }
