@@ -82,6 +82,33 @@ dataSources:
         - event: PoolCreated(indexed address)
           handler: handleNewWeightedPool
   - kind: ethereum/contract
+      name: WeightedPool2TokenFactory
+      network: arbitrum-one
+      source:
+        address: '0xcf0a32bbef8f064969f21f7e02328fb577382018'
+        abi: WeightedPoolFactory
+        startBlock: 222864
+      mapping:
+        kind: ethereum/events
+        apiVersion: 0.0.4
+        language: wasm/assemblyscript
+        file: ./src/balancerv2/poolFactory.ts
+        entities:
+          - Balancer
+          - Pool
+        abis:
+          - name: Vault
+            file: ./abis/Vault.json
+          - name: ERC20
+            file: ./abis/ERC20.json
+          - name: WeightedPoolFactory
+            file: ./abis/balancerv2/WeightedPoolFactory.json
+          - name: WeightedPool
+            file: ./abis/balancerv2/WeightedPool.json
+        eventHandlers:
+          - event: PoolCreated(indexed address)
+            handler: handleNewWeightedPool
+  - kind: ethereum/contract
     name: SwaprFactory
     network: arbitrum-one
     source:
